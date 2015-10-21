@@ -23,5 +23,5 @@ FontName=Monospace 10
 
 ColorCursor=#d8d8d8
 ColorForeground=#d8d8d8
-ColorPalette=#181818;#ab4642;#21a58c;#f7ca88;#7cafc2;#ba8baf;#86c1b9;#d8d8d8;#585858;#cb0612;#41cf6c;#f7ca88;#44afc2;#ba3b5f;#86c1b9;#f8f8f8
+ColorPalette=#181818;#ff0642;#21c5ac;#f7ca88;#7cafc2;#ba8baf;#86c1b9;#d8d8d8;#585858;#cb0612;#41ff6c;#f7ca88;#44afc2;#0abbff;#86c1b9;#f8f8f8
 

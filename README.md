@@ -7,6 +7,7 @@ to use:
 	* copy vimrc 		=> ~/.vimrc
 	* copy tmux.conf 	=> ~/.tmux.conf
 	* copy vim 			=> ~/.vim
+	* xfce-terminal 	=> ~/.config/xfce4/terminal/terminalrc
 
 run git submodule update --init --recursive (or clone recursively) to acquire all of my plugins. 
 
