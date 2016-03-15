@@ -52,6 +52,7 @@ set tabstop=4
 set shiftwidth=4
 set autoindent
 set noexpandtab
+set list listchars=tab:»·,trail:·
 
 " set folding mode to syntax
 set foldmethod=syntax
