@@ -23,9 +23,6 @@ hi LineNr ctermfg=brown
 set nocursorline
 "hi CursorLine cterm=bold ctermbg=NONE ctermfg=NONE
 
-" always show the status bar
-set laststatus=2
-
 " set colorscheme
 colorscheme apprentice.own
 
@@ -52,7 +49,6 @@ set tabstop=4
 set shiftwidth=4
 set autoindent
 set noexpandtab
-set list listchars=tab:»·,trail:·
 
 " set folding mode to syntax
 set foldmethod=syntax
@@ -61,30 +57,23 @@ set foldlevel=99
 " map jj in insert mode to escape so I don't have to leave typing row
 inoremap jj <esc>
 
+" map old WordStar ctrl + a/e to begin/end of line
+imap <C-a> <esc>0i
+imap <C-e> <esc>$a
+nmap <C-a> 0
+nmap <C-e> $
+
 " switching panes using vim navigation keys
 nnoremap <C-j> <C-w>j
 nnoremap <C-h> <C-w>h
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
+" and switching tabs
+nnoremap <C-i> :tabp<CR>
+nnoremap <C-o> :tabn<CR>
 " more natural split settings
 set splitbelow
 set splitright
-
-" and switching windows
-nnoremap <C-i> :tabp<CR>
-nnoremap <C-o> :tabn<CR>
-nnoremap <C-u> :tabedit %<CR>
-
-" resizing windows using vim navigation keys
-nmap <M-h> <C-w><
-nmap <M-j> <C-w>-
-nmap <M-k> <C-w>+
-nmap <M-l> <C-w>>
-" on OSX, use the character the meta-key combination generates
-"nmap <leader>h <C-w>10<
-"nmap <leader>j <C-w>10-
-"nmap <leader>k <C-w>10+
-"nmap <leader>l <C-w>10>
 
 " map w to word back word
 map w b
@@ -101,6 +90,7 @@ nmap <C-n> :NERDTreeToggle<CR>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 " close nerdtree after opening file
 let NERDTreeQuitOnOpen = 1
+let NERDTreeWinSize = 50
 
 " tagbar key
 nmap <leader>t :TagbarToggle<CR>
@@ -112,14 +102,19 @@ let g:ctrlp_match_window = 'min:1,max:20,results:50'
 let g:ctrlp_custom_ignore = {
 	\ 'dir': '\v[\/]\.?(git|hg|docs|build)$'
 	\ }
+let g:ctrlp_max_files=0
 
 " lusty explorer stuffs
 nmap <F2> :LustyBufferExplorer<CR>
 imap <F2> <esc>:LustyBufferExplorer<CR>
 nmap <leader>b :LustyBufferExplorer<CR>
 
+" map leader q to quick scope toggle
+nmap <leader>q <plug>(QuickScopeToggle)
+vmap <leader>q <plug>(QuickScopeToggle)
+
 " YouCompleteMe extra file
-let g:ycm_global_ycm_extra_conf = '~/.vim/ycm_extra_conf.py.default'
+let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
 let g:ycm_confirm_extra_conf = 0
 let g:ycm_autoclose_preview_window_after_completion = 1
 let g:ycm_enable_diagnostic_signs = 0
@@ -127,20 +122,22 @@ let g:ycm_enable_diagnostic_signs = 0
 nnoremap <leader>y :let g:ycm_auto_trigger=0<CR>
 nnoremap <leader>Y :let g:ycm_auto_trigger=1<CR>
 " setup for supertab with ultisnips
-let g:ycm_key_list_select_completion = ['<Down>']
-let g:ycm_key_list_previous_completion = ['<Up>']
+let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+
+" setup ultisnips to work with supertab
+let g:UltiSnipsListSnippets = "<C-u>"
+let g:UltiSnipsExpandTrigger = "<tab>"
+let g:UltiSnipsJumpForwardTrigger = "<tab>"
+let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 
 " super tag configuration
 let g:SuperTabDefaultCompletionType = 'context'
-"let g:SuperTabContextDefaultCompletionType = '<C-n>'
+let g:SuperTabContextDefaultCompletionType = '<C-n>'
 "let g:SuperTabCrMapping = 0
 
-" ultisnips stuff
-let g:UltiSnipsExpandTrigger="<C-g>"
-let g:UltiSnipsJumpForwardTrigger="<C-e>"
-let g:UltiSnipsJumpBackwardTrigger="<C-w>"
-
 " airline settings
+set laststatus=2 " always show airline
 let g:airline_theme = "badwolf"
 " unicode symbols
 if !exists('g:airline_symbols')
