@@ -102,7 +102,9 @@ let g:ctrlp_match_window = 'min:1,max:20,results:50'
 let g:ctrlp_custom_ignore = {
 	\ 'dir': '\v[\/]\.?(git|hg|docs|build)$'
 	\ }
-let g:ctrlp_max_files=0
+let g:ctrlp_max_files = 0
+" always search from the dir you start vim
+let g:ctrlp_working_path_mode = 0
 
 " lusty explorer stuffs
 nmap <F2> :LustyBufferExplorer<CR>
