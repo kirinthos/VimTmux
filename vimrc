@@ -48,7 +48,7 @@ set showmatch " matching parens
 set tabstop=4
 set shiftwidth=4
 set autoindent
-set noexpandtab
+set expandtab
 
 " set folding mode to syntax
 set foldmethod=syntax
@@ -69,6 +69,7 @@ nnoremap <C-h> <C-w>h
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 " and switching tabs
+nnoremap <leader>ot : tabe %<CR>
 nnoremap <C-i> :tabp<CR>
 nnoremap <C-o> :tabn<CR>
 " more natural split settings
@@ -80,6 +81,9 @@ map w b
 
 " autocomplete color adjustments
 hi Pmenu ctermbg=darkgrey ctermfg=green 
+
+" sync files to trustedpath through syncr
+nnoremap <leader>r :Suplfil<CR>:redraw!<CR>
 
 " ctags in status line
 let g:ctags_statusline=1 
@@ -93,9 +97,8 @@ let NERDTreeQuitOnOpen = 1
 let NERDTreeWinSize = 50
 
 " tagbar key
-nmap <leader>t :TagbarToggle<CR>
-nmap <F8> :TagbarToggle<CR>
-imap <F8> <esc>:TagbarToggle<CR>a
+nnoremap <leader>tt :TagbarOpenAutoClose<CR>
+nnoremap <leader>to :TagbarToggle<CR>
 
 " ctrlp configuration
 let g:ctrlp_match_window = 'min:1,max:20,results:50'
@@ -173,3 +176,4 @@ nmap <Leader>fj :%!python -m json.tool<CR>
 
 " change cpp-enhanced-highlight class scope
 let g:cpp_class_scope_highlight = 1
+
