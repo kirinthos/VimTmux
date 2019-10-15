@@ -54,8 +54,8 @@ set expandtab
 set foldmethod=syntax
 set foldlevel=99
 
-" map jj in insert mode to escape so I don't have to leave typing row
-inoremap jj <esc>
+" map jk in insert mode to escape so I don't have to leave typing row
+inoremap jk <esc>
 
 " map old WordStar ctrl + a/e to begin/end of line
 imap <C-a> <esc>0i
