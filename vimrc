@@ -23,6 +23,9 @@ hi LineNr ctermfg=brown
 set nocursorline
 "hi CursorLine cterm=bold ctermbg=NONE ctermfg=NONE
 
+" trailing chars identifiers
+set listchars=tab:>·,trail:·
+
 " set colorscheme
 colorscheme apprentice.own
 
@@ -101,13 +104,21 @@ nnoremap <leader>tt :TagbarOpenAutoClose<CR>
 nnoremap <leader>to :TagbarToggle<CR>
 
 " ctrlp configuration
-let g:ctrlp_match_window = 'min:1,max:20,results:50'
+let g:ctrlp_match_window = 'min:1,max:10,results:10'
+let g:ctrlp_match_func = {'match': 'pymatcher#PyMatch'}
 let g:ctrlp_custom_ignore = {
-	\ 'dir': '\v[\/]\.?(git|hg|docs|build)$'
+	\ 'dir': '\v[\/]\.?(git|hg|docs|build|third-party)$'
 	\ }
-let g:ctrlp_max_files = 0
-" always search from the dir you start vim
-let g:ctrlp_working_path_mode = 0
+let g:ctrlp_max_files = 10000
+let g:ctrlp_max_depth = 30
+let g:ctrlp_cache_dir = $HOME . '/.cache/ctrlp'
+if executable('rg')
+    set grepprg=rg\ --color=never
+    let g:ctrlp_user_command = 'rg %s --files --color=never --glob ""'
+    let g:ctrlp_use_caching = 0
+elseif executable('ag')
+    let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+endif
 
 " lusty explorer stuffs
 nmap <F2> :LustyBufferExplorer<CR>
@@ -177,3 +188,5 @@ nmap <Leader>fj :%!python -m json.tool<CR>
 " change cpp-enhanced-highlight class scope
 let g:cpp_class_scope_highlight = 1
 
+" ipdb breakpoint insertion
+nnoremap <leader>pb Oimport ipdb; ipdb.set_trace()<esc>

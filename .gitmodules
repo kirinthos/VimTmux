@@ -43,3 +43,6 @@
 [submodule "vim/bundle/vim-airline-themes"]
 	path = vim/bundle/vim-airline-themes
 	url = https://github.com/vim-airline/vim-airline-themes.git
+[submodule "vim/bundle/ctrlp-py-matcher"]
+	path = vim/bundle/ctrlp-py-matcher
+	url = https://github.com/FelikZ/ctrlp-py-matcher
