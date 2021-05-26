@@ -31,9 +31,11 @@ colorscheme apprentice.own
 
 " tell vim to look at parents for tags
 set tags=.tags;/
+
+" Note: to preserve original behavior on new systems, changing to space
 " set a new leader key
-nnoremap , ;
-let mapleader = ";"
+" nnoremap , ;
+let mapleader = " "
 
 " put all backup files in one place
 set backup
@@ -79,14 +81,8 @@ nnoremap <C-o> :tabn<CR>
 set splitbelow
 set splitright
 
-" map w to word back word
-map w b
-
 " autocomplete color adjustments
-hi Pmenu ctermbg=darkgrey ctermfg=green 
-
-" sync files to trustedpath through syncr
-nnoremap <leader>r :Suplfil<CR>:redraw!<CR>
+hi Pmenu ctermbg=23 ctermfg=green 
 
 " ctags in status line
 let g:ctags_statusline=1 
@@ -105,9 +101,10 @@ nnoremap <leader>to :TagbarToggle<CR>
 
 " ctrlp configuration
 let g:ctrlp_match_window = 'min:1,max:10,results:10'
-let g:ctrlp_match_func = {'match': 'pymatcher#PyMatch'}
+" wait...did this only match python?
+" let g:ctrlp_match_func = {'match': 'pymatcher#PyMatch'}
 let g:ctrlp_custom_ignore = {
-	\ 'dir': '\v[\/]\.?(git|hg|docs|build|third-party)$'
+	\ 'dir': '\v[\/]\.?(git|hg|build|third-party|venv)$'
 	\ }
 let g:ctrlp_max_files = 10000
 let g:ctrlp_max_depth = 30
@@ -142,12 +139,11 @@ let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
 let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
 
 " setup ultisnips to work with supertab
-let g:UltiSnipsListSnippets = "<C-u>"
-let g:UltiSnipsExpandTrigger = "<tab>"
-let g:UltiSnipsJumpForwardTrigger = "<tab>"
-let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
+let g:UltiSnipsExpandTrigger = "<C-u>"
+let g:UltiSnipsJumpForwardTrigger = "<C-n>"
+let g:UltiSnipsJumpBackwardTrigger = "<C-p>"
 
-" super tag configuration
+" super tab configuration
 let g:SuperTabDefaultCompletionType = 'context'
 let g:SuperTabContextDefaultCompletionType = '<C-n>'
 "let g:SuperTabCrMapping = 0
@@ -190,3 +186,65 @@ let g:cpp_class_scope_highlight = 1
 
 " ipdb breakpoint insertion
 nnoremap <leader>pb Oimport ipdb; ipdb.set_trace()<esc>
+
+
+
+" Rust LSP
+if executable('rls')
+    au User lsp_setup call lsp#register_server({
+        \ 'name': 'rls',
+        \ 'cmd': {server_info->['rustup', 'run', 'stable', 'rls']},
+        \ 'whitelist': ['rust'],
+        \ })
+endif 
+
+if executable('pyls')
+    " pip install python-language-server
+    au User lsp_setup call lsp#register_server({
+        \ 'name': 'pyls',
+        \ 'cmd': {server_info->['pyls']},
+        \ 'allowlist': ['python'],
+        \ })
+endif
+
+function! s:on_lsp_buffer_enabled() abort
+    setlocal omnifunc=lsp#complete
+    setlocal signcolumn=yes
+    if exists('+tagfunc') | setlocal tagfunc=lsp#tagfunc | endif
+    nmap <buffer> gd <plug>(lsp-definition)
+    nmap <buffer> gpd <plug>(lsp-peek-definition)
+    nmap <buffer> gpi <plug>(lsp-peek-implementation)
+    nmap <buffer> gs <plug>(lsp-document-symbol-search)
+    nmap <buffer> gS <plug>(lsp-workspace-symbol-search)
+    nmap <buffer> gr <plug>(lsp-references)
+    nmap <buffer> gi <plug>(lsp-implementation)
+    nmap <buffer> gt <plug>(lsp-type-definition)
+    nmap <buffer> gc <plug>(lsp-code-action)
+    nmap <buffer> <leader>rn <plug>(lsp-rename)
+    nmap <buffer> [g <plug>(lsp-previous-diagnostic)
+    nmap <buffer> ]g <plug>(lsp-next-diagnostic)
+    nmap <buffer> K <plug>(lsp-hover)
+
+    nnoremap <buffer> <expr><C-d> lsp#scroll(+8)
+    nnoremap <buffer> <expr><C-s> lsp#scroll(-8)
+    inoremap <buffer> <expr><C-d> lsp#scroll(+8)
+    inoremap <buffer> <expr><C-s> lsp#scroll(-8)
+
+    let g:lsp_format_sync_timeout = 500
+    autocmd! BufWritePre *.rs,*.go call execute('LspDocumentFormatSync')
+    
+    " refer to doc to add more commands
+endfunction
+
+augroup lsp_install
+    au!
+    " call s:on_lsp_buffer_enabled only for languages that has the server registered.
+    autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
+augroup END
+
+let g:lsp_diagnostics_float_cursor = 1
+let g:lsp_diagnostics_float_delay = 200
+
+" set complete options overrides
+" let g:asyncomplete_auto_completeopt = 0
+" set completeopt=menuone,noinsert,noselect,preview
