@@ -190,13 +190,13 @@ nnoremap <leader>pb Oimport ipdb; ipdb.set_trace()<esc>
 
 
 " Rust LSP
-if executable('rls')
-    au User lsp_setup call lsp#register_server({
-        \ 'name': 'rls',
-        \ 'cmd': {server_info->['rustup', 'run', 'stable', 'rls']},
-        \ 'whitelist': ['rust'],
+if executable('rust-analyzer')
+  au User lsp_setup call lsp#register_server({
+        \   'name': 'Rust Language Server',
+        \   'cmd': {server_info->['rust-analyzer']},
+        \   'whitelist': ['rust'],
         \ })
-endif 
+endif
 
 if executable('pyls')
     " pip install python-language-server
@@ -246,5 +246,5 @@ let g:lsp_diagnostics_float_cursor = 1
 let g:lsp_diagnostics_float_delay = 200
 
 " set complete options overrides
-" let g:asyncomplete_auto_completeopt = 0
-" set completeopt=menuone,noinsert,noselect,preview
+let g:asyncomplete_auto_completeopt = 0
+set completeopt=menuone,noinsert,noselect,preview
