@@ -1,0 +1,62 @@
+live_config_reload: true
+
+window:
+    startup_mode: Maximized
+    dynamic_title: true
+    gtk_theme_variant: dark
+
+font:
+    normal:
+        family: Hermit
+        style: Regular
+    bold:
+        family: Hermit
+        style: Bold
+    italic:
+        family: Hermit
+        style: Italic
+    bold_italic:
+        family: Hermit
+        style: Bold Italic
+
+# Colors (Ayu Dark)
+colors:
+  # Default colors
+  primary:
+    background: '#000000'
+    #background: '#0A0E14'
+    foreground: '#EBEBEB'
+
+  # Normal colors
+  normal:
+    black: '#01060E'
+    red: '#FE2A36'
+    green: '#55d52d'
+    yellow: '#FCA739'
+    blue: '#53BDFA'
+    magenta: '#CA3A64'
+    cyan: '#90E1C6'
+    white: '#DDDDDD'
+
+  # Bright colors
+  bright:
+    black: '#686868'
+    red: '#F07178'
+    green: '#C2D94C'
+    yellow: '#FFB454'
+    blue: '#59C2FF'
+    magenta: '#FFEE99'
+    cyan: '#95E6CB'
+    white: '#FFFFFF'
+
+mouse:
+    hide_when_typing: true
+    hints:
+        launcher:
+            program: xdg-open
+        modifiers: Command
+
+cursor:
+    style: Block
+    unfocused_hollow: true
+

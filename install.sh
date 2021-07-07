@@ -13,6 +13,7 @@ set -x
 cp zshrc ~/.zshrc
 cp gitconfig ~/.gitconfig
 cp tmux.conf ~/.tmux.conf
+cp alacritty.yml ~/.alacritty.yml
 cp vimrc ~/.vimrc
 cp -r vim ~/.vim
 
