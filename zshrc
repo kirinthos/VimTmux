@@ -21,9 +21,16 @@ precmd() { vcs_info }
 # Format the vcs_info_msg_0_ variable
 zstyle ':vcs_info:git:*' formats '(%b)'
  
+# verify banging
+setopt hist_verify
+
 # Set up the prompt (with git branch name)
 setopt PROMPT_SUBST
-export PROMPT='%F{15}[%F{1}%n%F{15}@ %F{51}%c %F{46}λ${vcs_info_msg_0_} %F{15}] %'
+_nix_prompt=""
+if [[ ! -z $IN_NIX_SHELL ]]; then
+    _nix_prompt="%F{23}(nix) %{$reset_color%}"
+fi
+export PROMPT='${_nix_prompt}%F{15}[%F{1}%n%F{15}@ %F{51}%c %F{46}λ${vcs_info_msg_0_} %F{15}] %'
 #export PROMPT='%{$fg[white]%}[%{$fg[red]%}%n%{$fg[white]%}@ %{$fg[cyan]%}%c%{green%} ${vcs_info_msg_0_} %{$fg[white]%}] %{$reset_color%}%'
 
 #ZSH_HIGHLIGHT_STYLES[suffix-alias]=fg=cyan,underline
@@ -40,10 +47,15 @@ bindkey 'jk' vi-cmd-mode
 export EDITOR=vim
 export VISUAL=vim
 
-export PATH=~/scripts:~/.local/bin:$PATH:$HOME/.gem/ruby/2.2.0/bin:$ANDROID_HOME/platform-tools:$ANDROID_HOME/tools:$ANDROID_HOME/tools/bin
+export PATH=~/scripts:$PATH
 
 alias newmux='tmux new-session -A -s base'
 alias ls='ls --color=auto'
 alias ll='ls -l'
 alias la='ls -al'
 alias g='git'
+alias vim='nvim'
+
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+source /usr/share/nvm/init-nvm.sh

@@ -39,8 +39,6 @@ let colors_name = 'apprentice'
 if &t_Co >= 256 || has('gui_running')
   hi Normal           ctermbg=NONE  ctermfg=252  guibg=#262626 guifg=#bcbcbc cterm=NONE           gui=NONE
 
-  set background=dark
-
   hi Comment          ctermbg=NONE ctermfg=244  guibg=NONE    guifg=#585858 cterm=NONE           gui=NONE
   hi Constant         ctermbg=NONE ctermfg=208  guibg=NONE    guifg=#ff8700 cterm=NONE           gui=NONE
   hi Error            ctermbg=NONE ctermfg=131  guibg=NONE    guifg=#af5f5f cterm=reverse        gui=reverse
@@ -61,6 +59,9 @@ if &t_Co >= 256 || has('gui_running')
   hi PmenuSbar        ctermbg=240  ctermfg=NONE guibg=#585858 guifg=NONE    cterm=NONE           gui=NONE
   hi PmenuSel         ctermbg=66   ctermfg=235  guibg=#5f8787 guifg=#262626 cterm=NONE           gui=NONE
   hi PmenuThumb       ctermbg=66   ctermfg=66   guibg=#5f8787 guifg=#5f8787 cterm=NONE           gui=NONE
+
+  hi CocFloating      ctermbg=235  ctermfg=250  guibg=#444444 guifg=#bcbcbc cterm=NONE           gui=NONE
+  hi CocHintSign      ctermbg=NONE ctermfg=33   guibg=NONE    guifg=#6af3d5 cterm=NONE           gui=NONE
 
   hi ErrorMsg         ctermbg=131  ctermfg=235  guibg=#af5f5f guifg=#262626 cterm=NONE           gui=NONE
   hi ModeMsg          ctermbg=108  ctermfg=235  guibg=#87af87 guifg=#262626 cterm=NONE           gui=NONE
@@ -97,7 +98,7 @@ if &t_Co >= 256 || has('gui_running')
   hi Title            ctermbg=NONE ctermfg=231  guibg=NONE    guifg=#ffffff cterm=bold           gui=NONE
 
   hi DiffAdd          ctermbg=108  ctermfg=235  guibg=#87af87 guifg=#262626 cterm=NONE           gui=NONE
-  hi DiffChange       ctermbg=60   ctermfg=235  guibg=#5f5f87 guifg=#262626 cterm=NONE           gui=NONE
+  hi DiffChange       ctermbg=20   ctermfg=235  guibg=#5f5f87 guifg=#262626 cterm=NONE           gui=NONE
   hi DiffDelete       ctermbg=131  ctermfg=235  guibg=#af5f5f guifg=#262626 cterm=NONE           gui=NONE
   hi DiffText         ctermbg=103  ctermfg=235  guibg=#8787af guifg=#262626 cterm=NONE           gui=NONE
 
@@ -110,7 +111,7 @@ if &t_Co >= 256 || has('gui_running')
   hi SpellBad         ctermbg=NONE ctermfg=131  guibg=NONE    guifg=NONE    cterm=undercurl      gui=undercurl guisp=#af5f5f
   hi SpellCap         ctermbg=NONE ctermfg=73   guibg=NONE    guifg=NONE    cterm=undercurl      gui=undercurl guisp=#5fafaf
   hi SpellLocal       ctermbg=NONE ctermfg=65   guibg=NONE    guifg=NONE    cterm=undercurl      gui=undercurl guisp=#5f875f
-  hi SpellRare        ctermbg=NONE ctermfg=208  guibg=NONE    guifg=NONE    cterm=undercurl      gui=undercurl guisp=#ff8700
+  hi SpellRare        ctermbg=NONE ctermfg=196  guibg=NONE    guifg=NONE    cterm=undercurl      gui=undercurl guisp=#ff8700
 
   hi ColorColumn      ctermbg=131  ctermfg=NONE guibg=#af5f5f guifg=NONE    cterm=NONE           gui=NONE
   hi signColumn       ctermbg=234  ctermfg=242  guibg=#1c1c1c guifg=#6c6c6c cterm=NONE           gui=NONE
@@ -140,6 +141,9 @@ elseif &t_Co == 8 || $TERM !~# '^linux' || &t_Co == 16
   hi PmenuSbar        ctermbg=7           ctermfg=NONE        cterm=NONE
   hi PmenuSel         ctermbg=2           ctermfg=0           cterm=NONE
   hi PmenuThumb       ctermbg=2           ctermfg=NONE        cterm=NONE
+
+  hi CocFloating      ctermbg=235         ctermfg=250         cterm=NONE
+  hi CocHintSign      ctermbg=NONE        ctermfg=33          cterm=NONE
 
   hi ErrorMsg         ctermbg=1           ctermfg=0           cterm=NONE
   hi ModeMsg          ctermbg=2           ctermfg=0           cterm=NONE

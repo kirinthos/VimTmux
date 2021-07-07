@@ -1,0 +1,6 @@
+{
+    "rust-analyzer.server.path": "/usr/bin/rust-analyzer",
+    "rust-analyzer.procMacro.enable": true,
+    "rust-analyzer.experimental.procAttrMacros": true,
+    "diagnostic.checkCurrentLine": true
+}
