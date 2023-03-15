@@ -72,7 +72,7 @@ augroup end
 
 " Symbol renaming.
 nmap <silent> <leader>cr <Plug>(coc-rename)
-nmap <silent> <leader>ca  <Plug>(coc-codeaction)
+nmap <silent> <leader>ca  <Plug>(coc-codeaction-cursor)
 nmap <silent> <leader>cl  <Plug>(coc-codeaction-line)
 nmap <silent> <leader>cs  <Plug>(coc-codeaction-selected)<cr>
 nmap <silent> <leader>cf  <Plug>(coc-fix-current)
