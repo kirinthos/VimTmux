@@ -112,6 +112,7 @@ if has('nvim')
 else
     call plug#begin('~/.vim/plugged')
 endif
+Plug 'direnv/direnv.vim'
 Plug 'junegunn/fzf.vim'
 Plug 'vim-test/vim-test'
 Plug 'scrooloose/nerdtree'
@@ -126,6 +127,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'neoclide/coc.nvim'
 Plug 'antoinemadec/coc-fzf'
 Plug 'junegunn/vim-easy-align'
+Plug 'ggvgc/vim-fuzzysearch'
 " colors
 Plug 'whatyouhide/vim-gotham'
 Plug 'cocopon/iceberg.vim'
@@ -135,12 +137,14 @@ Plug 'editorconfig/editorconfig-vim'
 " language specifics
 Plug 'rust-lang/rust.vim'
 Plug 'arzg/vim-rust-syntax-ext'
-Plug 'pangloss/vim-javascript'
 Plug 'leafgarland/typescript-vim'
 Plug 'MaxMEllon/vim-jsx-pretty'
 Plug 'peitalin/vim-jsx-typescript'
 Plug 'styled-components/vim-styled-components'
 Plug 'z0mbix/vim-shfmt', { 'for': 'sh' }
+Plug 'othree/html5.vim'
+Plug 'pangloss/vim-javascript'
+Plug 'evanleck/vim-svelte', {'branch': 'main'}
 call plug#end()
 
 
@@ -220,8 +224,9 @@ omap / <Plug>(easymotion-tn)
 " map n <Plug>(easymotion-next)
 " map N <Plug>(easymotion-prev)
 
-let g:rustfmt_autosave = 1
-let g:shfmt_fmt_on_save = 1
+" commented out because i use LSP format on save through CoC
+"let g:rustfmt_autosave = 1
+"let g:shfmt_fmt_on_save = 1
 
 "
 " vim-test configuration
@@ -239,6 +244,11 @@ let $FZF_DEFAULT_COMMAND = 'fd'
 nmap <silent> <leader><leader>  :FZF<CR>
 nmap <silent> <leader>sp        :Rg<CR>
 nmap <silent> <leader>b         :Buffers<CR>
+" open in the current directory
+nmap <silent> <leader>of         :Files %:p:h<CR>
+
+" Fuzzy Search configuration
+nnoremap <leader>/ :FuzzySearch<CR>
 
 " load coc configuration
 source ~/.vim/coc-config.vimrc

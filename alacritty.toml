@@ -1,0 +1,59 @@
+[general]
+live_config_reload = true
+
+[colors.bright]
+black = "#686868"
+blue = "#59C2FF"
+cyan = "#95E6CB"
+green = "#C2D94C"
+magenta = "#FFEE99"
+red = "#F07178"
+white = "#FFFFFF"
+yellow = "#FFB454"
+
+[colors.normal]
+black = "#01060E"
+blue = "#53BDFA"
+cyan = "#90E1C6"
+green = "#55d52d"
+magenta = "#CA3A64"
+red = "#FE2A36"
+white = "#DDDDDD"
+yellow = "#FCA739"
+
+[colors.primary]
+background = "#000000"
+foreground = "#EBEBEB"
+
+[cursor]
+style = "Block"
+unfocused_hollow = true
+
+[font.bold]
+family = "Hermit"
+style = "Bold"
+
+[font.bold_italic]
+family = "Hermit"
+style = "Bold Italic"
+
+[font.italic]
+family = "Hermit"
+style = "Italic"
+
+[font.normal]
+family = "Hermit"
+style = "Regular"
+
+[[keyboard.bindings]]
+action = "SpawnNewInstance"
+key = "N"
+mods = "Shift|Control"
+
+[mouse]
+hide_when_typing = true
+
+[window]
+decorations_theme_variant = "Dark"
+dynamic_title = true
+startup_mode = "Maximized"

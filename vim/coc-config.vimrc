@@ -61,6 +61,7 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 " Formatting selected code.
 xmap <silent> <leader>f  <Plug>(coc-format-selected)
 nmap <silent> <leader>f  <Plug>(coc-format-selected)
+nmap <silent> <leader>fb  :Format<CR>
 
 augroup mygroup
   autocmd!

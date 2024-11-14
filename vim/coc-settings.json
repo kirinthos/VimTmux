@@ -1,21 +1,27 @@
 {
-    "rust-analyzer.checkOnSave.command": "clippy",
-    "rust-analyzer.server.path": "rust-analyzer",
-    "rust-analyzer.procMacro.enable": true,
-    "rust-analyzer.experimental.procAttrMacros": true,
-    "rust-analyzer.inlayHints.enable": true,
-    "rust-analyzer.inlayHints.typeHints": true,
-    "rust-analyzer.inlayHints.chainingHints": true,
-    "rust-analyzer.inlayHints.typeHintsWithVariable": true,
-    "rust-analyzer.cargo.allFeatures": true,
-    "diagnostic.checkCurrentLine": true,
-    "diagnostic.messageDelay": 500,
-    "languageserver": {
-        "bash": {
-            "command": "bash-language-server",
-            "args": ["start"],
-            "filetypes": ["sh"],
-            "ignoredRootPaths": ["~"]
-        }
+  "coc.preferences.formatOnSave": true,
+  "rust-analyzer.server.path": "rust-analyzer",
+  "rust-analyzer.checkOnSave.command": "clippy",
+  "rust-analyzer.inlayHints.chainingHints.enable": true,
+  "rust-analyzer.inlayHints.typeHints.enable": true,
+  "rust-analyzer.procMacro.enable": true,
+  "rust-analyzer.cargo.features": "all",
+  "rust-analyzer.updates.checkOnStartup": true,
+  "rust-analyzer.cargo.targetDir": true,
+  "python.formatting.provider": "black",
+  "python.formatting.blackArgs": ["--experimental-string-processing"],
+  "python.linting.pylintEnabled": false,
+  "python.linting.flake8Args": ["--max-line-length=88"],
+  "python.linting.flake8Enabled": true,
+  "python.linting.enabled": true,
+  "diagnostic.checkCurrentLine": true,
+  "diagnostic.messageDelay": 500,
+  "languageserver": {
+    "bash": {
+      "command": "bash-language-server",
+      "args": ["start"],
+      "filetypes": ["sh"],
+      "ignoredRootPaths": ["~"]
     }
+  }
 }

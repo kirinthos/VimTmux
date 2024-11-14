@@ -20,3 +20,17 @@
     std = stash drop
 [push]
 	default = simple
+    autoSetupRemote = true
+[diff]
+    tool = /usr/bin/delta
+[merge]
+	conflictstyle = diff3
+[commit]
+	gpgsign = true
+[init]
+	defaultBranch = main
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
