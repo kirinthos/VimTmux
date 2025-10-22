@@ -1,7 +1,10 @@
 {
+  "tsserver.enable": false,
   "coc.preferences.formatOnSave": true,
+  "coc.preferences.formatOnSaveTimeout": 1000,
   "rust-analyzer.server.path": "rust-analyzer",
-  "rust-analyzer.checkOnSave.command": "clippy",
+  "rust-analyzer.check.command": "clippy",
+  "rust-analyzer.completion.autoimport.enable": true,
   "rust-analyzer.inlayHints.chainingHints.enable": true,
   "rust-analyzer.inlayHints.typeHints.enable": true,
   "rust-analyzer.procMacro.enable": true,

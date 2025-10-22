@@ -42,6 +42,9 @@ set backup
 set backupdir=~/.vim/backup
 set directory=~/.vim/tmp
 
+" always show the signcolumn, otherwise it would shift the text each time diagnostics appear/resolve
+set signcolumn=yes
+
 " set smartcase, using all lowercase is case insensitive search, any uppercase character it becomes sensitive
 set ignorecase
 set smartcase
@@ -112,27 +115,26 @@ if has('nvim')
 else
     call plug#begin('~/.vim/plugged')
 endif
-Plug 'direnv/direnv.vim'
 Plug 'junegunn/fzf.vim'
 Plug 'vim-test/vim-test'
 Plug 'scrooloose/nerdtree'
-Plug 'easymotion/vim-easymotion'
-Plug 'airblade/vim-gitgutter'
-Plug 'kien/ctrlp.vim'
+"Plug 'kien/ctrlp.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'preservim/tagbar'
-Plug 'tpope/vim-fugitive'
-Plug 'neoclide/coc.nvim'
-Plug 'antoinemadec/coc-fzf'
 Plug 'junegunn/vim-easy-align'
+Plug 'easymotion/vim-easymotion'
 Plug 'ggvgc/vim-fuzzysearch'
+" Git
+Plug 'airblade/vim-gitgutter'
+Plug 'tpope/vim-fugitive'
 " colors
 Plug 'whatyouhide/vim-gotham'
 Plug 'cocopon/iceberg.vim'
 Plug 'romainl/Apprentice'
 " configuration of environments
+Plug 'direnv/direnv.vim'
 Plug 'editorconfig/editorconfig-vim'
 " language specifics
 Plug 'rust-lang/rust.vim'
@@ -145,6 +147,11 @@ Plug 'z0mbix/vim-shfmt', { 'for': 'sh' }
 Plug 'othree/html5.vim'
 Plug 'pangloss/vim-javascript'
 Plug 'evanleck/vim-svelte', {'branch': 'main'}
+
+" CoC - but I want to try something else
+Plug 'neoclide/coc.nvim'
+Plug 'antoinemadec/coc-fzf'
+
 call plug#end()
 
 
