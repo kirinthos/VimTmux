@@ -18,4 +18,4 @@ cp vimrc ~/.vimrc
 cp -r vim ~/.vim
 
 mkdir -p ~/.config/nvim
-cp init.vim.nvim ~/.config/nvim/init.vim
+cp init.lua ~/.config/nvim/init.lua

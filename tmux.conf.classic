@@ -1,3 +1,7 @@
+# use UTF8 (apparently no longer necessary)
+#set -g utf8
+#set-window-option -g utf8 on
+
 # make tmux display things in 256 colors
 set -g default-terminal "screen-256color"
 
@@ -100,5 +104,3 @@ bind -n M-j resize-pane -D 5
 bind -n M-h resize-pane -L 5
 bind -n M-l resize-pane -R 5
 
-# PLUGINS!
-run '~/.tmux/plugins/tpm/tpm'
